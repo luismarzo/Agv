@@ -322,10 +322,10 @@
 <transmission name="tran_frw_to_steering">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="frw_to_steering">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="motor_frw_to_steering">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
@@ -333,10 +333,10 @@
     <transmission name="tran_flw_to_steering">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="flw_to_steering">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="motor_flw_to_steering">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
@@ -344,10 +344,10 @@
     <transmission name="tran_body_to_rrw">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="body_to_rrw">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="motor_body_to_rrw">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
@@ -355,17 +355,18 @@
     <transmission name="tran_body_to_rlw">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="body_to_rlw">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="motor_body_to_rlw">
-        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
     </transmission>
 
   <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
     <robotNamespace>/bobcat</robotNamespace>
+    </plugin>
   </gazebo>
 
 </robot>

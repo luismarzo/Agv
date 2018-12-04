@@ -11,6 +11,9 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   roscpp
   rospy
+  rviz
+  xacro
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
