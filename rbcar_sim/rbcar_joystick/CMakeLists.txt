@@ -35,3 +35,8 @@ add_dependencies(rbcar_joystick_node robotnik_msgs_generate_messages_cpp)
 target_link_libraries(rbcar_joystick_node
    ${catkin_LIBRARIES}
 )
+
+add_executable(arrows src/arrows.cpp)
+target_link_libraries(arrows
+   ${catkin_LIBRARIES}
+)
