@@ -9,4 +9,6 @@
 	<param name="publish_odom_tf" value="$(arg publish_tf)"/>
   </node> 
   
+  <node name="twist_to_acker" pkg="rbcar_robot_control" type="twist_to_acker.py" output="screen"/>
+  
 </launch>

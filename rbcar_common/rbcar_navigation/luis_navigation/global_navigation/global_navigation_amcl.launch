@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+
+
+    <!-- Run AMCL -->
+    <include file="$(find rbcar_navigation)/luis_navigation/common/amcl.launch"/>
+
+</launch>

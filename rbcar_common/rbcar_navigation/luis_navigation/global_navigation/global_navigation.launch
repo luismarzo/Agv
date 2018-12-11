@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Run the map server -->
+    <arg name="map" default="woow"/>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find rbcar_localization)/maps/$(arg map).yaml">
+    <param name="frame_id" value="/odom" />
+    </node>
+
+    <!-- Run AMCL -->
+    <include file="$(find rbcar_navigation)/luis_navigation/common/amcl.launch"/>
+    
+	
+	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <rosparam file="$(find rbcar_navigation)/luis_navigation/common/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find rbcar_navigation)/luis_navigation/common/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find rbcar_navigation)/luis_navigation/common/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find rbcar_navigation)/luis_navigation/common/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find rbcar_navigation)/luis_navigation/common/base_local_planner_params.yaml" command="load"/>
+        <rosparam file="$(find rbcar_navigation)/luis_navigation/common/global_planner_params.yaml" command="load" />
+        <rosparam file="$(find rbcar_navigation)/luis_navigation/common/recovery_behaviors.yaml" command="load" />
+        <rosparam>
+            planner_frequency: 1.0 
+        </rosparam>
+        <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+    </node>
+</launch>
