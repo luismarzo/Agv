@@ -89,7 +89,7 @@
     
   </link>
   
-    <link name="link_right_wheel_dir">    
+    <link name="right_steering">    
     <inertial>
       <mass value="0.01"/>
       <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
@@ -395,9 +395,9 @@
 </gazebo>
     
     
-  <joint name="joint_right_wheel_dir" type="revolute">
+  <joint name="right_steering_joint" type="revolute">
     <origin rpy="0 0 0" xyz="-0.4 0.25 -0.05"/>
-    <child link="link_right_wheel_dir" />
+    <child link="right_steering" />
     <parent link="link_chassis"/>
     <axis rpy="0 0 0" xyz="0 0 1"/>
     <limit effort="10000" velocity="1000" lower="-0.55" upper="0.55"/>
@@ -408,7 +408,7 @@
   <joint name="joint_right_wheel" type="continuous">
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <child link="link_right_wheel" />
-    <parent link="link_right_wheel_dir"/>
+    <parent link="right_steering"/>
     <limit effort="10000" velocity="1000"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
     <joint_properties damping="1.0" friction="1.0" />
@@ -643,12 +643,12 @@
       </actuator>
     </transmission-->
     
-        <transmission name="tran_joint_right_wheel_dir">
+        <transmission name="tran_right_steering_joint">
       <type>transmission_interface/SimpleTransmission</type>
-      <joint name="joint_right_wheel_dir">
+      <joint name="right_steering_joint">
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
-      <actuator name="motor_joint_right_wheel_dir">
+      <actuator name="motor_right_steering_joint">
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>

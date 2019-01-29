@@ -346,24 +346,23 @@
   <!--   Joint for right wheel  -->
 
   
-  
-  
-
-<!--gazebo>
-    <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>20</updateRate>
-      <leftJoint>joint_left_wheel</leftJoint>
-      <rightJoint>joint_right_wheel</rightJoint>
-      <wheelSeparation>0.4</wheelSeparation>
-      <wheelDiameter>0.2</wheelDiameter>
-      <torque>0.1</torque>
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>link_chassis</robotBaseFrame>
-    </plugin>
-  </gazebo-->
+      <!--gazebo>
+        <plugin name="agv_multi_controller" filename="libdiffdrive_plugin_multi_wheel.so">
+        <commandTopic>cmd_vel</commandTopic>	
+        <rightJoints>joint_right_wheel joint_right_wheel_2 joint_right_wheel_3 joint_right_wheel_4</rightJoints>
+        <leftJoints>joint_left_wheel joint_left_wheel_2 joint_left_wheel_3 joint_left_wheel_4</leftJoints>
+        <odometryTopic>world</odometryTopic>
+        <odometryFrame>world</odometryFrame>
+        <odometryRate>20.0</odometryRate>
+	<publishOdometryTf>true</publishOdometryTf>
+        <publishOdometryMsg>false</publishOdometryMsg>
+        <robotBaseFrame>link_chassis</robotBaseFrame>
+        </plugin>
+    </gazebo-->
+    
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+  </gazebo>
   
     
   
