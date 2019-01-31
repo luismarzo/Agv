@@ -18,7 +18,9 @@ catkin_package(
  )
 
 
-catkin_install_python(PROGRAMS scripts/ackermann_controller
+catkin_install_python(PROGRAMS scripts/ackermann_controller 
+                      DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+catkin_install_python(PROGRAMS scripts/fake_odom 
                       DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 install(DIRECTORY config launch
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
@@ -36,3 +38,5 @@ add_executable(odom src/odom.cpp)
 target_link_libraries(odom
    ${catkin_LIBRARIES}
 )
+
+

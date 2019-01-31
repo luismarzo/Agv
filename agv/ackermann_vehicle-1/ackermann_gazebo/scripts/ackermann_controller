@@ -270,13 +270,13 @@ class _AckermannCtrlr(object):
             _create_axle_cmd_pub(list_ctrlrs, right_rear_axle_ctrlr_name)
             
         self._left_front_axle_cmd_pub_1 = \
-            _create_axle_cmd_pub("/left_front_axle_ctrlr_1/command", Float64)
+            rospy.Publisher("/left_front_axle_ctrlr_1/command", Float64, queue_size=1)
         self._right_front_axle_cmd_pub_1 = \
-            _create_axle_cmd_pub("/right_front_axle_ctrlr_1/command", Float64)
+            rospy.Publisher("/right_front_axle_ctrlr_1/command", Float64, queue_size=1)
         self._left_rear_axle_cmd_pub_1 = \
-            _create_axle_cmd_pub("/left_rear_axle_ctrlr_1/command", Float64)
+            rospy.Publisher("/left_rear_axle_ctrlr_1/command", Float64, queue_size=1)
         self._right_rear_axle_cmd_pub_1 = \
-            _create_axle_cmd_pub("/right_rear_axle_ctrlr_1/command", Float64)            
+            rospy.Publisher("/right_rear_axle_ctrlr_1/command", Float64, queue_size=1)            
 
         self._ackermann_cmd_sub = \
             rospy.Subscriber("ackermann_cmd", AckermannDrive,

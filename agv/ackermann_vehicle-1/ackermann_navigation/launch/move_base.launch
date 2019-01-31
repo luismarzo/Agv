@@ -6,8 +6,8 @@
   <arg name="global_frame" default="map"/> 
   <arg name="odom_frame" default="odom"/> 
   <arg name="base_frame" default="base_link"/>
-  <arg name="laser_frame" default="hokuyo_link"/>
-  <arg name="scan_topic" default="hokuyo_scan"/>
+  <arg name="laser_frame" default="front_laser_base_link"/>
+  <arg name="scan_topic" default="front_laser/scan"/>
   
   <!-- Run move_base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base">
