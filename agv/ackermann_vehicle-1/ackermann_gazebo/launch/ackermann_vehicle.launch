@@ -75,17 +75,18 @@ limitations under the License.
 
     <!-- Control the steering, axle, and shock absorber joints. -->
     <node name="ackermann_controller" pkg="ackermann_gazebo"
-          type="ackermann_controller">
+          type="ackermann_controller" output="screen">
       <param name="cmd_timeout" value="$(arg cmd_timeout)"/>
       <rosparam file="$(find ackermann_gazebo)/config/em_3905_ackermann_ctrlr_params.yaml" command="load"/>
     </node>
     
     <!--dodometry-->
         <!--node name="odom" pkg="ackermann_gazebo" type="odom"/-->
-        <!--node name="fake_odom" pkg="ackermann_gazebo" type="fake_odom" respawn="true" output="screen"/-->
-        <node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0.0 0.0 0.0 0 0 0.0 /map /odom 1000"/>
-        <node pkg="tf" type="static_transform_publisher" name="base_to_map" args="0.0 0.0 0.0 0 0 0.0 /base_link /map 1000"/>
+        <node name="fake_odom" pkg="ackermann_gazebo" type="fake_odom" respawn="true" output="screen"/>
+        <!--node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0.0 0.0 0.0 0 0 0.0 /map /odom 1000"/>
+        <node pkg="tf" type="static_transform_publisher" name="base_to_map" args="0.0 0.0 0.0 0 0 0.0 /odom /base_link 1000"/-->
     <!--twist2ack node -->
+
       <node name="twist2ack" pkg="ackermann_twist2ack" type="twist2ack.py" respawn="true" output="screen"/>
   </group>
 </launch>

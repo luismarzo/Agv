@@ -419,13 +419,17 @@ class _AckermannCtrlr(object):
         center_y = self._wheelbase * math.tan((pi / 2) - theta)
         steer_ang_changed = theta != self._last_steer_ang
         if steer_ang_changed:
-            self._last_steer_ang = theta
-            self._theta_left = \
-                _get_steer_ang(math.atan(self._inv_wheelbase *
-                                         (center_y - self._joint_dist_div_2)))
-            self._theta_right = \
-                _get_steer_ang(math.atan(self._inv_wheelbase *
-                                         (center_y + self._joint_dist_div_2)))
+            if theta<0.9 and theta>-0.9:
+            	self._last_steer_ang = theta
+            	self._theta_left = \
+           	     _get_steer_ang(math.atan(self._inv_wheelbase *
+              	                           (center_y - self._joint_dist_div_2)))
+          	self._theta_right = \
+          	     _get_steer_ang(math.atan(self._inv_wheelbase *
+          	                           (center_y + self._joint_dist_div_2)))
+                                     
+
+            
 
         return steer_ang_changed, center_y
 
@@ -501,8 +505,10 @@ def _create_cmd_pub(list_ctrlrs, ctrlr_name):
 def _get_steer_ang(phi):
     # Return the desired steering angle for a front wheel.
     if phi >= 0.0:
-        return (pi / 2) - phi
-    return (-pi / 2) - phi
+        resu = (pi / 2) - phi
+    else:
+        resu = (-pi / 2) - phi
+    return resu
 
 
 # main

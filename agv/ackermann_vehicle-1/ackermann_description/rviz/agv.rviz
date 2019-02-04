@@ -69,7 +69,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        hokuyo_link:
+        front_laser_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -193,7 +193,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.00999999978
       Style: Flat Squares
-      Topic: /hokuyo_scan
+      Topic: /front_laser/scan
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -202,12 +202,12 @@ Visualization Manager:
       Class: rviz/Map
       Color Scheme: map
       Draw Behind: false
-      Enabled: false
+      Enabled: true
       Name: Map
       Topic: /map
       Unreliable: false
       Use Timestamp: false
-      Value: false
+      Value: true
     - Alpha: 1
       Class: rviz/Polygon
       Color: 25; 255; 0
@@ -289,7 +289,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -310,7 +310,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 19.0186729
+      Distance: 10.0367603
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -325,10 +325,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.590399027
+      Pitch: 0.5153988
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.0222120993
+      Yaw: 3.18539166
     Saved: ~
 Window Geometry:
   Displays:

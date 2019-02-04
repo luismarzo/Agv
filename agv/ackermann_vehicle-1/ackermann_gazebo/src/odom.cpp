@@ -3,7 +3,7 @@
 #include <nav_msgs/Odometry.h>
 
 int main(int argc, char** argv){
-  ros::init(argc, argv, "odometry_publisher");
+ /* ros::init(argc, argv, "odometry_publisher");
 
   ros::NodeHandle n;
   ros::Publisher odom_pub = n.advertise<nav_msgs::Odometry>("odom", 50);
@@ -77,4 +77,5 @@ int main(int argc, char** argv){
     last_time = current_time;
     r.sleep();
   }
+  */
 }
