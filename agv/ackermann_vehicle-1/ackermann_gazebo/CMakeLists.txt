@@ -39,4 +39,9 @@ target_link_libraries(odom
    ${catkin_LIBRARIES}
 )
 
+add_executable(sub_and_pub_rviz src/sub_and_pub_rviz.cpp)
+target_link_libraries(sub_and_pub_rviz
+   ${catkin_LIBRARIES}
+)
+
 

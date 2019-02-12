@@ -6,7 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /Path3
+        - /RobotModel1
       Splitter Ratio: 0.5
     Tree Height: 557
   - Class: rviz/Selection
@@ -193,7 +193,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.00999999978
       Style: Flat Squares
-      Topic: /front_laser/scan
+      Topic: /agv/front_laser/scan
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -204,7 +204,7 @@ Visualization Manager:
       Draw Behind: false
       Enabled: true
       Name: Map
-      Topic: /map
+      Topic: /agv/map
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -213,7 +213,7 @@ Visualization Manager:
       Color: 25; 255; 0
       Enabled: true
       Name: Polygon
-      Topic: /move_base/local_costmap/footprint
+      Topic: /agv/move_base/global_costmap/footprint
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -236,7 +236,7 @@ Visualization Manager:
       Radius: 0.0299999993
       Shaft Diameter: 0.100000001
       Shaft Length: 0.100000001
-      Topic: /move_base/NavfnROS/plan
+      Topic: /agv/move_base/NavfnROS/plan
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -259,7 +259,7 @@ Visualization Manager:
       Radius: 0.0299999993
       Shaft Diameter: 0.100000001
       Shaft Length: 0.100000001
-      Topic: /move_base/TebLocalPlannerROS/global_plan
+      Topic: /agv/move_base/TebLocalPlannerROS/global_plan
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -282,14 +282,14 @@ Visualization Manager:
       Radius: 0.0299999993
       Shaft Diameter: 0.100000001
       Shaft Length: 0.100000001
-      Topic: /move_base/TebLocalPlannerROS/local_plan
+      Topic: /agv/move_base/TebLocalPlannerROS/local_plan
       Unreliable: false
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: map
+    Fixed Frame: chassis
     Frame Rate: 30
   Name: root
   Tools:
@@ -325,10 +325,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.5153988
+      Pitch: 0.900398612
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.18539166
+      Yaw: 3.39539051
     Saved: ~
 Window Geometry:
   Displays:

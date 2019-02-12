@@ -184,7 +184,7 @@ class _AckermannCtrlr(object):
                                   "not be used.")
                     continue
 
-                pub = rospy.Publisher(ctrlr_name + "/command", Float64,
+                pub = rospy.Publisher("/agv/" + ctrlr_name + "/command", Float64,
                                       latch=True, queue_size=1)
                 _wait_for_ctrlr(list_ctrlrs, ctrlr_name)
                 pub.publish(eq_pos)
@@ -258,8 +258,8 @@ class _AckermannCtrlr(object):
             _create_cmd_pub(list_ctrlrs, left_steer_ctrlr_name)
         self._right_steer_cmd_pub = \
             _create_cmd_pub(list_ctrlrs, right_steer_ctrlr_name)
-        self._left_steer_cmd_pub_1 = rospy.Publisher("/left_steering_ctrlr_1/command", Float64, queue_size=1)
-	self._right_steer_cmd_pub_1 = rospy.Publisher("/right_steering_ctrlr_1/command", Float64, queue_size=1)
+        self._left_steer_cmd_pub_1 = rospy.Publisher("/agv/left_steering_ctrlr_1/command", Float64, queue_size=1)
+	self._right_steer_cmd_pub_1 = rospy.Publisher("/agv/right_steering_ctrlr_1/command", Float64, queue_size=1)
         self._left_front_axle_cmd_pub = \
             _create_axle_cmd_pub(list_ctrlrs, left_front_axle_ctrlr_name)
         self._right_front_axle_cmd_pub = \
@@ -270,16 +270,16 @@ class _AckermannCtrlr(object):
             _create_axle_cmd_pub(list_ctrlrs, right_rear_axle_ctrlr_name)
             
         self._left_front_axle_cmd_pub_1 = \
-            rospy.Publisher("/left_front_axle_ctrlr_1/command", Float64, queue_size=1)
+            rospy.Publisher("/agv/left_front_axle_ctrlr_1/command", Float64, queue_size=1)
         self._right_front_axle_cmd_pub_1 = \
-            rospy.Publisher("/right_front_axle_ctrlr_1/command", Float64, queue_size=1)
+            rospy.Publisher("/agv/right_front_axle_ctrlr_1/command", Float64, queue_size=1)
         self._left_rear_axle_cmd_pub_1 = \
-            rospy.Publisher("/left_rear_axle_ctrlr_1/command", Float64, queue_size=1)
+            rospy.Publisher("/agv/left_rear_axle_ctrlr_1/command", Float64, queue_size=1)
         self._right_rear_axle_cmd_pub_1 = \
-            rospy.Publisher("/right_rear_axle_ctrlr_1/command", Float64, queue_size=1)            
+            rospy.Publisher("/agv/right_rear_axle_ctrlr_1/command", Float64, queue_size=1)            
 
         self._ackermann_cmd_sub = \
-            rospy.Subscriber("ackermann_cmd", AckermannDrive,
+            rospy.Subscriber("/agv/ackermann_cmd", AckermannDrive,
                              self.ackermann_cmd_cb, queue_size=1)
 
     def spin(self):
@@ -499,7 +499,7 @@ def _create_axle_cmd_pub(list_ctrlrs, axle_ctrlr_name):
 def _create_cmd_pub(list_ctrlrs, ctrlr_name):
     # Create a command publisher.
     _wait_for_ctrlr(list_ctrlrs, ctrlr_name)
-    return rospy.Publisher(ctrlr_name + "/command", Float64, queue_size=1)
+    return rospy.Publisher("/agv/" + ctrlr_name + "/command", Float64, queue_size=1)
 
 
 def _get_steer_ang(phi):

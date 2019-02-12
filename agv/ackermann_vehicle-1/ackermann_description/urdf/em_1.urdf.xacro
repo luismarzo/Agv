@@ -769,9 +769,15 @@ limitations under the License.
       <xacro:sensor_sick_s3000 prefix="front_laser" parent="base_link">
 		<origin xyz="0 0.0 0.08" rpy="0 0.0 0"/>
 	</xacro:sensor_sick_s3000>
+	
+
+
+  
 
 
   <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <legacyModeNS>true</legacyModeNS>
+    </plugin>
   </gazebo>
 </robot>

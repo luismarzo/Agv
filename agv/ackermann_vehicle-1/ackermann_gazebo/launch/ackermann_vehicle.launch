@@ -36,7 +36,7 @@ limitations under the License.
 -->
 
 <launch>
-  <arg name="namespace" default="/"/>
+  <arg name="namespace" default="/agv"/>
   <arg name="world_name" default="worlds/gs.world"/>
   <arg name="cmd_timeout" default="0.5"/>
   <arg name="paused" default="false"/>
@@ -48,10 +48,12 @@ limitations under the License.
   <arg name="roll" default="0"/>
   <arg name="pitch" default="0.0"/>
   <arg name="yaw" default="0.0"/>
+  
 
   <include file="$(find ackermann_description)/launch/ackermann_vehicle.launch">
     <arg name="namespace" value="$(arg namespace)"/>
   </include>
+<node name="sub_and_pub_rviz" pkg="ackermann_gazebo" type="sub_and_pub_rviz" output="screen"/>
 
   <group ns="$(arg namespace)">
     <!-- Create the world. -->
@@ -81,12 +83,11 @@ limitations under the License.
     </node>
     
     <!--dodometry-->
-        <!--node name="odom" pkg="ackermann_gazebo" type="odom"/-->
+      
         <node name="fake_odom" pkg="ackermann_gazebo" type="fake_odom" respawn="true" output="screen"/>
-        <!--node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0.0 0.0 0.0 0 0 0.0 /map /odom 1000"/>
-        <node pkg="tf" type="static_transform_publisher" name="base_to_map" args="0.0 0.0 0.0 0 0 0.0 /odom /base_link 1000"/-->
-    <!--twist2ack node -->
 
+	
       <node name="twist2ack" pkg="ackermann_twist2ack" type="twist2ack.py" respawn="true" output="screen"/>
+      
   </group>
 </launch>

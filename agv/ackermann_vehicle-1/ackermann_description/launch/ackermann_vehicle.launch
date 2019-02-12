@@ -2,7 +2,7 @@
 
 
   <launch>
-  <arg name="namespace" default="ackermann_vehicle"/>
+  <arg name="namespace" default="/agv/ackermann_vehicle"/>
 
   <group ns="$(arg namespace)">
     <!-- robot_description is used by nodes that publish to joint_states. -->

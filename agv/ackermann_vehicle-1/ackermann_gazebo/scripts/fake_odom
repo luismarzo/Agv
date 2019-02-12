@@ -8,15 +8,15 @@ import tf2_ros
 import tf_conversions
 rospy.init_node("odom_pub")
 
-odom_pub =  rospy.Publisher('/odom',Odometry)
+odom_pub =  rospy.Publisher('/agv/odom',Odometry)
 
-rospy.wait_for_service('/gazebo/get_model_state')
+rospy.wait_for_service('/agv/gazebo/get_model_state')
 
-get_model_srv = rospy.ServiceProxy('/gazebo/get_model_state',GetModelState)
+get_model_srv = rospy.ServiceProxy('/agv/gazebo/get_model_state',GetModelState)
 
 odom = Odometry()
 header = Header()
-header.frame_id = '/odom'
+header.frame_id = '/agv/odom'
 
 model = GetModelStateRequest()
 model.model_name = 'ackermann_vehicle'
@@ -27,7 +27,7 @@ def tf_broadcast(msg):
     t = geometry_msgs.msg.TransformStamped()
     
     t.header.stamp = rospy.Time.now()
-    t.header.frame_id = "odom"
+    t.header.frame_id = "/agv/odom"
     t.child_frame_id = "base_link"
     t.transform.translation.x = msg.pose.position.x
     t.transform.translation.y = msg.pose.position.y

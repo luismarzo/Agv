@@ -33,15 +33,15 @@ if __name__ == '__main__':
     
     rospy.init_node('twist2ack')
         
-    twist_cmd_topic = rospy.get_param('~twist_cmd_topic', '/move_base/cmd_vel') 
-    ackermann_cmd_topic = rospy.get_param('~ackermann_cmd_topic', '/ackermann_cmd')
+    twist_cmd_topic = rospy.get_param('~twist_cmd_topic', '/agv/move_base/cmd_vel') 
+    ackermann_cmd_topic = rospy.get_param('~ackermann_cmd_topic', '/agv/ackermann_cmd')
     wheelbase = rospy.get_param('~wheelbase', 1.0)
-    frame_id = rospy.get_param('~frame_id', 'odom')
+    frame_id = rospy.get_param('~frame_id', '/agv/odom')
     
     rospy.Subscriber(twist_cmd_topic, Twist, cmd_callback, queue_size=1)
     pub = rospy.Publisher(ackermann_cmd_topic, AckermannDrive, queue_size=1)
     
-    rospy.loginfo("Node 'cmd_vel_to_ackermann_drive' started.\nListening to %s, publishing to %s. Frame id: %s, wheelbase: %f", "/cmd_vel", ackermann_cmd_topic, frame_id, wheelbase)
+    rospy.loginfo("Node 'cmd_vel_to_ackermann_drive' started.\nListening to %s, publishing to %s. Frame id: %s, wheelbase: %f", "/agv/cmd_vel", ackermann_cmd_topic, frame_id, wheelbase)
     
     rospy.spin()
     

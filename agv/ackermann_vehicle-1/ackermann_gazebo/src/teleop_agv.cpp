@@ -39,7 +39,7 @@ TeleopTurtle::TeleopTurtle()
 
 
   //twist_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 10);
-  twist_pub_ = nh_.advertise<ackermann_msgs::AckermannDrive>("/ackermann_cmd", 10);
+  twist_pub_ = nh_.advertise<ackermann_msgs::AckermannDrive>("/agv/ackermann_cmd", 10);
 }
 
 int kfd = 0;
