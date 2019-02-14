@@ -15,3 +15,8 @@ catkin_package(
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
+
+add_executable(bobsub_and_pub_rviz src/bobsub_and_pub_rviz.cpp)
+target_link_libraries(bobsub_and_pub_rviz
+   ${catkin_LIBRARIES}
+)

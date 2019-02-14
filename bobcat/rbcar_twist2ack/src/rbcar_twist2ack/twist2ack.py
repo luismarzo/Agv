@@ -35,10 +35,10 @@ if __name__ == '__main__':
     
     rospy.init_node('twist2ack')
         
-    twist_cmd_topic = rospy.get_param('~twist_cmd_topic', '/cmd_vel_out') 
-    ackermann_cmd_topic = rospy.get_param('~ackermann_cmd_topic', '/rbcar_robot_control/command')
+    twist_cmd_topic = rospy.get_param('~twist_cmd_topic', '/bobcat/cmd_vel_out') 
+    ackermann_cmd_topic = rospy.get_param('~ackermann_cmd_topic', '/bobcat/rbcar_robot_control/command')
     wheelbase = rospy.get_param('~wheelbase', 1.0)
-    frame_id = rospy.get_param('~frame_id', 'odom')
+    frame_id = rospy.get_param('~frame_id', '/bobcat/odom')
     
     rospy.Subscriber(twist_cmd_topic, Twist, cmd_callback, queue_size=1)
     pub = rospy.Publisher(ackermann_cmd_topic, AckermannDriveStamped, queue_size=1)

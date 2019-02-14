@@ -39,7 +39,7 @@ TeleopTurtle::TeleopTurtle()
 
 
   //twist_pub_ = nh_.advertise<geometry_msgs::Twist>("cmd_vel", 10);
-  twist_pub_ = nh_.advertise<ackermann_msgs::AckermannDriveStamped>("/rbcar_robot_control/command", 10);
+  twist_pub_ = nh_.advertise<ackermann_msgs::AckermannDriveStamped>("/bobcat/rbcar_robot_control/command", 10);
 }
 
 int kfd = 0;

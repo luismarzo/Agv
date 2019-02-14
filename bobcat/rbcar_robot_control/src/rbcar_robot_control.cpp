@@ -259,13 +259,13 @@ RbcarControllerClass(ros::NodeHandle h) : diagnostic_(),
   orientation_x_ = 0.0; orientation_y_ = 0.0; orientation_z_ = 0.0; orientation_w_ = 1.0;
 
   // Advertise controller services
-  srv_SetOdometry_ = rbcar_robot_control_node_handle.advertiseService("set_odometry",  &RbcarControllerClass::srvCallback_SetOdometry, this);
+  srv_SetOdometry_ = rbcar_robot_control_node_handle.advertiseService("/bobcat/set_odometry",  &RbcarControllerClass::srvCallback_SetOdometry, this);
 
   // Subscribe to joint states topic
-  joint_state_sub_ = node_handle_.subscribe<sensor_msgs::JointState>("joint_states", 1, &RbcarControllerClass::jointStateCallback, this);
+  joint_state_sub_ = node_handle_.subscribe<sensor_msgs::JointState>("/bobcat/rbcar/joint_states", 1, &RbcarControllerClass::jointStateCallback, this);
 
   // Subscribe to imu data
-  imu_sub_ = node_handle_.subscribe("imu/data", 1, &RbcarControllerClass::imuCallback, this);
+  imu_sub_ = node_handle_.subscribe("/bobcat/imu/data", 1, &RbcarControllerClass::imuCallback, this);
 
   // Adevertise reference topics for the controllers 
   ref_vel_frw_ = node_handle_.advertise<std_msgs::Float64>( frw_vel_topic_, 50);
@@ -279,7 +279,7 @@ RbcarControllerClass(ros::NodeHandle h) : diagnostic_(),
   cmd_sub_ = rbcar_robot_control_node_handle.subscribe<ackermann_msgs::AckermannDriveStamped>("command", 1, &RbcarControllerClass::commandCallback, this);
     
   // Publish odometry 
-  odom_pub_ = private_node_handle_.advertise<nav_msgs::Odometry>("odom", 1000);
+  odom_pub_ = private_node_handle_.advertise<nav_msgs::Odometry>("/bobcat/odom", 1000);
 
   // Component frequency diagnostics
   diagnostic_.setHardwareID("rbcar_robot_control - simulation");
@@ -445,7 +445,7 @@ void PublishOdometry()
     // TODO change to tf_prefix 
     geometry_msgs::TransformStamped odom_trans;
     odom_trans.header.stamp = current_time;
-    odom_trans.header.frame_id = "odom";
+    odom_trans.header.frame_id = "/bobcat/odom";
     odom_trans.child_frame_id = "base_footprint";
 
     odom_trans.transform.translation.x = robot_pose_px_;
@@ -464,7 +464,7 @@ void PublishOdometry()
     //next, we'll publish the odometry message over ROS
     nav_msgs::Odometry odom;
     odom.header.stamp = current_time;
-    odom.header.frame_id = "odom";
+    odom.header.frame_id = "/bobcat/odom";
 
     //set the position
 	// Position

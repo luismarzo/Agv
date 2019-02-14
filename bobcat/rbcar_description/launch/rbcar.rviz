@@ -74,6 +74,10 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
+        bobcat/map:
+          Value: true
+        bobcat/odom:
+          Value: true
         front_laser_base_link:
           Value: true
         gps_base_link:
@@ -89,10 +93,6 @@ Visualization Manager:
         left_rear_wheel:
           Value: true
         left_steering_link:
-          Value: true
-        map:
-          Value: true
-        odom:
           Value: true
         right_front_axle_carrier:
           Value: true
@@ -110,8 +110,8 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          odom:
+        bobcat/map:
+          bobcat/odom:
             base_footprint:
               base_link:
                 front_laser_base_link:
@@ -161,7 +161,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.00999999978
       Style: Flat Squares
-      Topic: /front_laser/scan
+      Topic: /bobcat/front_laser/scan
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -220,7 +220,7 @@ Visualization Manager:
       Radius: 0.0299999993
       Shaft Diameter: 0.100000001
       Shaft Length: 0.100000001
-      Topic: /move_base/NavfnROS/plan
+      Topic: /bobcat/move_base/NavfnROS/plan
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -243,7 +243,7 @@ Visualization Manager:
       Radius: 0.0299999993
       Shaft Diameter: 0.100000001
       Shaft Length: 0.100000001
-      Topic: /move_base/TebLocalPlannerROS/global_plan
+      Topic: /bobcat/move_base/TebLocalPlannerROS/global_plan
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -266,7 +266,7 @@ Visualization Manager:
       Radius: 0.0299999993
       Shaft Diameter: 0.100000001
       Shaft Length: 0.100000001
-      Topic: /move_base/TebLocalPlannerROS/local_plan
+      Topic: /bobcat/move_base/TebLocalPlannerROS/local_plan
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -274,14 +274,14 @@ Visualization Manager:
       Color: 25; 255; 0
       Enabled: true
       Name: Polygon
-      Topic: /move_base/local_costmap/footprint
+      Topic: /bobcat/move_base/local_costmap/footprint
       Unreliable: false
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: map
+    Fixed Frame: bobcat/map
     Frame Rate: 30
   Name: root
   Tools:
