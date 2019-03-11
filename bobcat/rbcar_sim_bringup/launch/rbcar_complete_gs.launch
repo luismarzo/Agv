@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 <launch>
 	<arg name="namespace" default="/bobcat"/>
+	 <arg name="_world" default="true"/>
   <!-- start gazebo simulation -->
-  <include file="$(find rbcar_gazebo)/launch/rbcar_gs.launch"/>
+  <include file="$(find rbcar_gazebo)/launch/rbcar_gs.launch">
+  <arg name="_world" value="$(arg _world)" />
+  </include>
 
 
   <group ns="$(arg namespace)">

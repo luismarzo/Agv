@@ -40,9 +40,12 @@ limitations under the License.
   <arg name="world_name" default="worlds/gs.world"/>
   <arg name="cmd_timeout" default="0.5"/>
   <arg name="paused" default="false"/>
+   <arg name="_world" default="true"/>
+   <arg name="gui" default="false"/>
+   <arg name="world" default="empty_light"/>
 
   <!-- Vehicle pose -->
-  <arg name="x" default="0.0"/>
+  <arg name="x" default="3.0"/>
   <arg name="y" default="0.0"/>
   <arg name="z" default="0.23"/>
   <arg name="roll" default="0"/>
@@ -55,17 +58,28 @@ limitations under the License.
   </include>
 <node name="sub_and_pub_rviz" pkg="ackermann_gazebo" type="sub_and_pub_rviz" output="screen"/>
 
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" if="$(arg _world)">
+      <!--arg name="world_name" value="$(find ackermann_gazebo)/worlds/gs.world" unless="$(arg _world)"/-->
+      <arg name="paused" default="$(arg paused)"/>
+          <arg name="world_name" value="$(find px4_bringup)/config/$(arg world).world" if="$(arg _world)"/>
+      <arg name="gui" value="$(arg gui)" /> <!--TODO esta puesto a FALSE cuidado-->
+    </include>
+    
+    
+     
+        <node pkg="px4_bringup" type="launch_gzworld.py" name="gazebo_world" output="screen"
+        args="-physics=ode -world=$(find px4_bringup)/config/$(arg world).world" if="$(arg _world)"/>
+        
+
+
   <group ns="$(arg namespace)">
     <!-- Create the world. -->
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-      <arg name="world_name" value="$(find ackermann_gazebo)/worlds/gs.world"/>
-      <arg name="paused" default="$(arg paused)"/>
-    </include>
+
 
     <!-- Spawn the vehicle. -->
     <node name="spawn_vehicle" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model ackermann_vehicle
-                -gazebo_namespace /$(arg namespace)/gazebo
+                -gazebo_namespace /gazebo
                 -x $(arg x) -y $(arg y) -z $(arg z)
                 -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
 
@@ -85,6 +99,7 @@ limitations under the License.
     <!--dodometry-->
       
         <node name="fake_odom" pkg="ackermann_gazebo" type="fake_odom" respawn="true" output="screen"/>
+
 
 	
       <node name="twist2ack" pkg="ackermann_twist2ack" type="twist2ack.py" respawn="true" output="screen"/>
